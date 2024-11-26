@@ -7,11 +7,22 @@ function Register(){
     var phone = useRef();
     var gender = useRef();
 
+    var registerUser = (event)=>{
+        event.preventDefault();
+        var nm =name.current.value;
+        var em =email.current.value;
+        var pass =password.current.value;
+        var mob =phone.current.value;
+        var gen =gender.current.value;
+
+        var obj
+    }
     return <div className="container">
         <div className="row text-center">
             <h1 style={{color:'red' , textShadow:'3px 3px 3px black'}}>Register Here !</h1>
         </div>
-        <form>
+
+        <form onSubmit={registerUser}>
   
         <div className="row form-group">
             <input type="text" className="form-control"  placeholder="Enter User Name" ref={name}/>
@@ -30,9 +41,9 @@ function Register(){
         </div>
 
         <div className="row form-group">
-            <select className="form-control" name={gender}>
-                <option>Male</option>
-                <option>Female</option>
+            <select className="form-control" ref={gender}>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
             </select>
         </div>
         
