@@ -1,13 +1,22 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import WebService from "./service/WebService";
+import WebAPI from "./service/WebAPI";
+import { useNavigate } from "react-router-dom";
 
 function Register(){
+
+    const navigate = useNavigate();
+    const [msg,setMessage] = useState();
+    const [validMsg,setValidationMessage] = useState();
+
+
     var name =  useRef();
     var email = useRef();
     var password = useRef();
     var phone = useRef();
     var gender = useRef();
 
-    var registerUser = (event)=>{
+    var registerUser = async (event)=>{
         event.preventDefault();
         var nm =name.current.value;
         var em =email.current.value;
@@ -15,7 +24,20 @@ function Register(){
         var mob =phone.current.value;
         var gen =gender.current.value;
 
-        var obj
+        var obj = {"name" : nm , "phone" : mob , "email" : em , "password" : pass , "gender" : gen}
+        console.log("Onject is : " +obj)
+
+        var resp = await WebService.postAPICall(WebAPI.registerAPI,obj);
+        console.log("Response is : "+resp);
+        console.log("String Response is : "+JSON.stringify(resp));
+
+        if(resp.data.status){
+            navigate("/")
+        }
+        else{
+            setMessage(resp.data.message)
+            setValidationMessage(resp.data.data[0].message)
+        }
     }
     return <div className="container">
         <div className="row text-center">
@@ -52,6 +74,8 @@ function Register(){
         </div>
           
         </form>
+        <h1 style={{color:'red'}}>{msg}  {validMsg}</h1>
+
     </div>
 }
  export default Register;
