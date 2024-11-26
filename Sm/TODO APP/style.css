@@ -1,0 +1,141 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    font-family: "Sour Gummy", sans-serif;
+}
+.container
+{
+    width: 100%;
+   
+}
+.todo-app
+{
+    width: 500px;
+    min-height: 350px;
+    background-color: azure;
+    margin: 2vw 30vw;
+    border-radius: 40px;
+    padding: 2vw;
+}
+.header
+{
+    display: flex;
+    gap: 8px;
+    text-align: center;
+    margin-left: 130px;
+}
+.header img
+{
+    width: 70px;
+    align-items: center;
+    text-align: center;
+    top: 0;
+}
+.input-area
+{
+    width: 100%;
+    border-radius: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+  background-color: #efefef;
+  font-family: "Sour Gummy", sans-serif;
+}
+input
+{
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+    font-size: 16px;
+    padding-left: 18px;
+
+}
+#date
+{
+    width: 120px;
+    background: transparent;
+}
+button
+{
+  border: none;
+  border-radius: 30px;
+  padding: 0.9vw 3vw;
+  background-color: #6a5acd;
+}
+.list-container
+{
+    margin-left: 13px;
+}
+ul li 
+{
+    list-style: none;
+    margin: 1.4vw;
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    cursor: pointer;
+    font-family: "Sour Gummy", sans-serif;
+}
+ul li::before
+{
+    content:'';
+    position: absolute;
+    width: 20px;
+    background:url(./unchecked.png);
+    background-size: cover;
+    height:  20px;
+    align-items: center;
+    top:0;
+    bottom: 10px; 
+    left: -26px;   
+}
+ul li.checked
+{
+    color: #555;
+    text-decoration: line-through ;
+
+}
+ul li.checked::before
+{
+    content: "";
+    background-image: url(./checked.png);
+    position: absolute;
+
+}
+span
+{
+    top: 0px;
+    margin-right: 20px;
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    
+}
+span
+{
+    color:black;
+    
+}
+span:hover
+{
+    background-color: #9999;
+    transform: scale(1.1);
+}

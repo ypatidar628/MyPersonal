@@ -1,0 +1,64 @@
+*
+{
+  margin: 0;
+  padding: 0;
+}
+body
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+.card
+{
+ width: 300px;
+ height: 140px;
+ /* position: relative; */
+}
+.btn-incriment 
+{
+    width: 5px !important;
+  height: 30px;
+  align-items: center;
+    justify-content: center;
+    margin-left: 40px;
+}  
+.btn-dicriment
+{
+  width: 5px !important; 
+  /* position: absolute; */
+  height: 30px;
+  align-items: center;
+    justify-content: center
+
+}
+.remove-btn
+{
+    /* position: absolute ; */
+        width: 100px;
+    text-align: center;
+    padding: 0.7vw 0.4vw !important;
+    margin-left: 90px;
+}
+.qty
+{
+    width: auto;
+    position: relative;
+    display: flex;
+    
+}
+.qty-text
+{
+    z-index: 100;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-bottom: 7px;
+    color: black;
+    font-weight: 900 !important;
+}
+.card-container
+{
+    width: 600px !important;
+    display: flex !important;
+
+}
