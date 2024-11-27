@@ -70,7 +70,9 @@ function Register(){
         </div>
         
         <div className="row form-group">
-            <input type="submit" className="btn btn-success form-control"  value="Register" />
+            <input type="submit" className="btn btn-success form-control"  value="Register" onClick={()=>{
+                registerUser();
+            }}/>
         </div>
           
         </form>
