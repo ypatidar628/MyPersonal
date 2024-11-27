@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 function Register(){
 
-    const navigate = useNavigate();
-    const [msg,setMessage] = useState();
-    const [validMsg,setValidationMessage] = useState();
+    const navigate = useNavigate("");
+    const [msg,setMessage] = useState("");
+    const [validMsg,setValidationMessage] = useState("");
 
 
     var name =  useRef();
@@ -25,7 +25,7 @@ function Register(){
         var gen =gender.current.value;
 
         var obj = {"name" : nm , "phone" : mob , "email" : em , "password" : pass , "gender" : gen}
-        console.log("Onject is : " +obj)
+        console.log("Object is : " +obj)
 
         var resp = await WebService.postAPICall(WebAPI.registerAPI,obj);
         console.log("Response is : "+resp);

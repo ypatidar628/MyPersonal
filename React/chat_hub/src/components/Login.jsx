@@ -5,6 +5,7 @@ import WebAPI from "./service/WebAPI";
 
 function Login(){
     const [msg,setMessage] = useState();
+
     const navigate = useNavigate();
 
     var email = useRef();
@@ -19,15 +20,18 @@ function Login(){
         var obj= {"email":em  , "password":pass};
         console.log("Object is : "+ obj);
 
-        var resp = await WebService.postAPICall(WebAPI.loginAPI,obj);
-        console.log("Response is : "+resp);
-        console.log("String Response is : "+JSON.stringify(resp));
-        if(resp.data.status){
+        var response = await WebService.postAPICall(WebAPI.loginAPI,obj);
+
+        console.log(response);
+
+        console.log(JSON.stringify(response));
+
+        if(response.data.status){
             // navigate("/userHome");
-            setMessage(resp.data.message);  
+            setMessage(response.data.message);  
         }
         else{
-            setMessage(resp.data.message);
+            setMessage(response.data.message);
         }
       }
 
@@ -45,12 +49,15 @@ function Login(){
             </div>
 
             <div className="row form-group">
-                <input type="submit" className="btn btn-success form-control"  value="Login" />
+                <input type="submit" className="btn btn-success form-control"  value="Login" onClick={(e)=>
+                    {
+                        loginUser(e);
+                    }
+                } />
             </div>
         </form>
         <span>If You Have Not Register ? <Link to="/register">Click Here !</Link></span>
-        <h1 style={{color:'red'}}>{msg}</h1>
-
+        <h4 style={{color:'green'}}>{msg}</h4>
     </div>
 }
  export default Login;
