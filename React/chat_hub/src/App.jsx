@@ -8,14 +8,21 @@ import UserList from "./components/user/UserList.jsx";
 import UserPost from "./components/user/UserPost.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 function App(){
   const [status,setStatus] = useState(false);
+  const mainStatus = useSelector(state=>state.userData.value);
+  console.log("main status"+mainStatus);
+  
+  useEffect(()=>{
+      console.log("main status2"+mainStatus.token);
+   })
 
   return <div className="wrapper">
-   {(status)?
-   <div>
+   {(mainStatus != null) ?
+   <div>      
       <SideBar/>
       <div className="main-panel">
         <Header/>

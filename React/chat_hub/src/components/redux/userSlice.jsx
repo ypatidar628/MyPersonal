@@ -5,5 +5,8 @@ const slice = createSlice({
     initialState:{
         value:{userStatus:false}
     },
+    reducers:{
+        
+    }
 })
 export default slice.reducer;
