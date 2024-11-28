@@ -369,7 +369,7 @@ function Header()
                   <div className="dropdown-divider"></div>
                   <Link className="dropdown-item" to="#">Account Setting</Link>
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="#">Logout</Link>
+                  <Link className="dropdown-item" to="/logout">Logout</Link>
                 </li>
               </div>
             </ul>

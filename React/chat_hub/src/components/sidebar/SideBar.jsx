@@ -38,6 +38,12 @@ function SideBar() {
               <div className="collapse" id="dashboard">
                 <ul className="nav nav-collapse">
                   <li>
+                    <Link to="/userHome01">
+                      <span className="sub-item">User Home</span>
+                    </Link>
+                  </li>
+
+                  <li>
                     <Link to="/userList">
                       <span className="sub-item">User List</span>
                     </Link>
