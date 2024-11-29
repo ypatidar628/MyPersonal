@@ -5,6 +5,8 @@ import WebAPI from "./service/WebAPI";
 import { useDispatch } from "react-redux";
 import { checkStatus } from "./redux/userSlice";
 import "../components/Login.css"
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login(){
     const [msg,setMessage] = useState();
@@ -35,7 +37,8 @@ function Login(){
             setMessage(response.data.message);  
         }
         else{
-            setMessage(response.data.message);
+            toast.error("invalid login !")
+            // setMessage(response.data.message);
         }
       }
 
@@ -76,6 +79,8 @@ function Login(){
 
     
     </div>
+    <ToastContainer/>
+
 </div>
 }
  export default Login;
