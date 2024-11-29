@@ -1,7 +1,31 @@
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { checkStatus } from "../redux/userSlice";
 
 function Header()
 {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const mainStatus = useSelector(state=>state.userData.value);
+  // console.log("l mainstatus "+mainStatus);
+
+  var logoutUser = async(event)=>{
+          event.preventDefault();
+
+         
+          console.log(mainStatus);
+          if(mainStatus){
+              dispatch(checkStatus(false))
+          }
+          else{
+              dispatch(checkStatus(true))
+          }
+
+  }
+
+
+
     return<div className="main-header">
     <div className="main-header-logo">
       <div className="logo-header" data-background-color="dark">
@@ -369,7 +393,9 @@ function Header()
                   <div className="dropdown-divider"></div>
                   <Link className="dropdown-item" to="#">Account Setting</Link>
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="/logout">Logout</Link>
+                  <Link className="dropdown-item" to="/logout" onClick={(event)=>{
+                      logoutUser(event);
+    }}>Logout</Link>
                 </li>
               </div>
             </ul>

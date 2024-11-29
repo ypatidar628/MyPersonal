@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { checkStatus } from "../redux/userSlice";
 
 function SideBar() {
+
+  const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const mainStatus = useSelector(state=>state.userData.value);
+    // console.log("l mainstatus "+mainStatus);
+
+    var logoutUser = async(event)=>{
+            event.preventDefault();
+
+           
+            console.log(mainStatus);
+            if(mainStatus){
+                dispatch(checkStatus(false))
+            }
+            else{
+                dispatch(checkStatus(true))
+            }
+
+    }
+
+
+
+  
   return (
     <div className="sidebar" data-background-color="dark">
       <div className="sidebar-logo">
@@ -68,7 +93,9 @@ function SideBar() {
                   </li>
 
                   <li>
-                    <Link to="/logout">
+                    <Link to="/logout"   onClick={(event)=>{
+                      logoutUser(event);
+                   }}>
                       <span className="sub-item">Logout</span>
                     </Link>
                   </li>
