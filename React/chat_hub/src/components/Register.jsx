@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import WebService from "./service/WebService";
 import WebAPI from "./service/WebAPI";
 import { useNavigate } from "react-router-dom";
+import "../components/Register.css"
 
 function Register(){
 
@@ -39,27 +40,28 @@ function Register(){
             setValidationMessage(resp.data.data[0].message)
         }
     }
-    return <div className="container">
-        <div className="row text-center">
-            <h1 style={{color:'red' , textShadow:'3px 3px 3px black'}}>Register Here !</h1>
+    return <div className="reg-container">
+        <div className="register-container">
+        <div className="register-title">
+            <h1 >Register Here !</h1>
         </div>
 
         <form onSubmit={registerUser}>
   
         <div className="row form-group">
-            <input type="text" className="form-control"  placeholder="Enter User Name" ref={name}/>
+            <input type="text" className="input form-control"  placeholder="Enter User Name" ref={name}/>
         </div>
 
         <div className="row form-group">
-            <input type="text" className="form-control"  placeholder="Enter User Email" ref={email}/>
+            <input type="text" className="input form-control"  placeholder="Enter User Email" ref={email}/>
         </div>
 
         <div className="row form-group">
-            <input type="text" className="form-control"  placeholder="Enter User Password" ref={password}/>
+            <input type="text" className="input form-control"  placeholder="Enter User Password" ref={password}/>
         </div>
 
         <div className="row form-group">
-            <input type="text" className="form-control"  placeholder="Enter User Phone" ref={phone}/>
+            <input type="text" className="input form-control"  placeholder="Enter User Phone" ref={phone}/>
         </div>
 
         <div className="row form-group">
@@ -70,14 +72,14 @@ function Register(){
         </div>
         
         <div className="row form-group">
-            <input type="submit" className="btn btn-success form-control"  value="Register" onClick={()=>{
+            <input type="submit" className="btn form-control button"  value="Register" onClick={()=>{
                 registerUser();
             }}/>
         </div>
           
         </form>
         <h1 style={{color:'red'}}>{msg}  {validMsg}</h1>
-
+        </div>
     </div>
 }
  export default Register;
