@@ -32,11 +32,17 @@ function Login(){
 
         // console.log(JSON.stringify(response));
 
-        if(response.data.status){
-            dispatch(checkStatus(true))
-            setMessage(response.data.message);  
+        if(response.data.status)
+            {
+
+            var info ={...response.data.data,isLoginStatus:true}
+            dispatch(checkStatus(info))
+            navigate("/userHome01")
+            setMessage(response.data.message); 
         }
-        else{
+
+        else
+        {
             toast.error("invalid login !")
             // setMessage(response.data.message);
         }

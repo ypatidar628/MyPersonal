@@ -1,22 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { checkStatus } from "../redux/userSlice";
 
 function Header()
 {
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const mainStatus = useSelector(state=>state.userData.value);
-  // console.log("l mainstatus "+mainStatus);
+  var dispatch = useDispatch();
+  var mainStatus = useSelector(state=>state.userData.value);
+  
+  var logoutUser = (event)=>{
 
-  var logoutUser = async(event)=>{
-          event.preventDefault();
+    event.preventDefault();
 
          
           console.log(mainStatus);
-          if(mainStatus){
-              dispatch(checkStatus(false))
+          if(mainStatus.isloginStatus){
+              dispatch(checkStatus(mainStatus.isloginStatus(false)))
           }
           else{
               dispatch(checkStatus(true))
@@ -361,7 +360,7 @@ function Header()
               </div>
               <span className="profile-username">
                 <span className="op-7">Hi,</span>
-                <span className="fw-bold">Hizrian</span>
+                <span className="fw-bold">{mainStatus.name}</span>
               </span>
             </Link>
             <ul className="dropdown-menu dropdown-user animated fadeIn">
@@ -393,9 +392,9 @@ function Header()
                   <div className="dropdown-divider"></div>
                   <Link className="dropdown-item" to="#">Account Setting</Link>
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="/logout" onClick={(event)=>{
-                      logoutUser(event);
-    }}>Logout</Link>
+                  <Link className="dropdown-item"  onClick={(event)=>{
+                   logoutUser(event);
+                  }}>Logout</Link>
                 </li>
               </div>
             </ul>

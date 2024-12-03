@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./components/header/Header.jsx";
 import SideBar from "./components/sidebar/SideBar.jsx";
 import Logout from "./components/user/Logout.jsx";
@@ -13,29 +13,21 @@ import { useSelector } from "react-redux";
 import UserHome01 from "./components/user/UserHome01.jsx";
 
 function App(){
-  const navigate = useNavigate();
-  const [status,setStatus] = useState(false);
-  const mainStatus = useSelector(state=>state.userData.value);
-  console.log("main status"+mainStatus);
-  
-  useEffect(()=>{
-      console.log("main status2"+mainStatus);
+  var navigate = useNavigate();
 
-      if(mainStatus){
-        setStatus(true)
-        navigate("/userHome01")
-      }
-      else{
-        setStatus(false)
+  const mainStatus = useSelector(state=>state.userData.value);
+  useEffect(()=>{
+      console.log("main status2"+mainStatus.isLoginStatus)
+      if(mainStatus.isLoginStatus==false){
         navigate("/")
       }
+      
    },[mainStatus])
 
   return <div className="wrapper">
-   {(status) ? (
-   <div>      
-      <SideBar/>
+   {(mainStatus.isLoginStatus) ?    
       <div className="main-panel">
+      <SideBar/>
         <Header/>
         <Routes>
           <Route path="/userHome01" element={<UserHome01/>}></Route>
@@ -46,14 +38,12 @@ function App(){
           <Route path="/logout" element={<Logout/>}></Route>
         </Routes>
       </div>
-      </div>)
-      :(
+      :
     <Routes>
-      <Route  path="/" element={<Login/>}></Route>\
+      <Route  path="/" element={<Login/>}></Route>
       <Route  path="/register" element={<Register/>}></Route>
     </Routes>
-      )
-}
+ }
   </div>
 }
 export default App;

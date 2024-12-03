@@ -1,27 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { checkStatus } from "../redux/userSlice";
 
 function SideBar() {
 
-  const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const mainStatus = useSelector(state=>state.userData.value);
-    // console.log("l mainstatus "+mainStatus);
+  // var dispatch = useDispatch();
+  // var mainStatus = useSelector(state=>state.userData.value);
+  
+  // var logoutUser = (event)=>{
 
-    var logoutUser = async(event)=>{
-            event.preventDefault();
+  //   event.preventDefault();
 
-           
-            console.log(mainStatus);
-            if(mainStatus){
-                dispatch(checkStatus(false))
-            }
-            else{
-                dispatch(checkStatus(true))
-            }
+         
+  //         console.log(mainStatus);
+  //         if(mainStatus.isloginStatus){
+  //             dispatch(checkStatus(mainStatus.isloginStatus(false)))
+  //         }
+  //         else{
+  //             dispatch(checkStatus(true))
+  //         }
 
-    }
+  // }
+
 
 
 
@@ -93,9 +93,7 @@ function SideBar() {
                   </li>
 
                   <li>
-                    <Link to="/logout"   onClick={(event)=>{
-                      logoutUser(event);
-                   }}>
+                    <Link to="/logout">
                       <span className="sub-item">Logout</span>
                     </Link>
                   </li>
