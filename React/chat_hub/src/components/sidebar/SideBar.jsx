@@ -1,29 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { checkStatus } from "../redux/userSlice";
 
 function SideBar() {
 
-  // var dispatch = useDispatch();
-  // var mainStatus = useSelector(state=>state.userData.value);
-  
-  // var logoutUser = (event)=>{
 
-  //   event.preventDefault();
 
+  var logoutUser = (event)=>{
+    
+    var dispatch = useDispatch();
+    var mainStatus = useSelector(state=>state.userData.value);
+    event.preventDefault();
+    
+    console.log("H"+mainStatus);
          
-  //         console.log(mainStatus);
-  //         if(mainStatus.isloginStatus){
-  //             dispatch(checkStatus(mainStatus.isloginStatus(false)))
-  //         }
-  //         else{
-  //             dispatch(checkStatus(true))
-  //         }
+          if(mainStatus.isloginStatus){
+              dispatch(checkStatus(mainStatus.isloginStatus(false)))
+          }
+          else{
+              dispatch(checkStatus(true))
+          }
 
-  // }
-
-
-
+  }
 
   
   return (
@@ -93,7 +89,9 @@ function SideBar() {
                   </li>
 
                   <li>
-                    <Link to="/logout">
+                    <Link  onClick={(event)=>{
+                   logoutUser(event);
+                  }}>
                       <span className="sub-item">Logout</span>
                     </Link>
                   </li>

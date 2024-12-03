@@ -24,11 +24,11 @@ function Login(){
         var pass = password.current.value;
 
         var obj= {"email":em  , "password":pass};
-        console.log("Object is : "+ obj);
+        // console.log("Object is : "+ obj);
 
         var response = await WebService.postAPICall(WebAPI.loginAPI,obj);
 
-        console.log(response);
+        // console.log(response);
 
         // console.log(JSON.stringify(response));
 

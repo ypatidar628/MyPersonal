@@ -4,16 +4,17 @@ import { checkStatus } from "../redux/userSlice";
 
 function Header()
 {
+    var mainStatus = useSelector(state=>state.userData.value);
 
-  var dispatch = useDispatch();
-  var mainStatus = useSelector(state=>state.userData.value);
   
   var logoutUser = (event)=>{
-
+    
+    var dispatch = useDispatch();
+    var mainStatus = useSelector(state=>state.userData.value);
     event.preventDefault();
-
+    
+    console.log("H"+mainStatus);
          
-          console.log(mainStatus);
           if(mainStatus.isloginStatus){
               dispatch(checkStatus(mainStatus.isloginStatus(false)))
           }
