@@ -6,14 +6,16 @@ function Header()
 {
     var mainStatus = useSelector(state=>state.userData.value);
 
-  
+
   var logoutUser = (event)=>{
     
     var dispatch = useDispatch();
     var mainStatus = useSelector(state=>state.userData.value);
     event.preventDefault();
     
-    console.log("H"+mainStatus);
+    // console.log("H"+mainStatus);
+    // console.log("H"+JSON.stringify(mainStatus));
+
          
           if(mainStatus.isloginStatus){
               dispatch(checkStatus(mainStatus.isloginStatus(false)))
@@ -354,7 +356,7 @@ function Header()
             >
               <div className="avatar-sm">
                 <img
-                  src="assets/img/profile.jpg"
+                  src={mainStatus.image}
                   alt="..."
                   className="avatar-img rounded-circle"
                 />
@@ -370,16 +372,15 @@ function Header()
                   <div className="user-box">
                     <div className="avatar-lg">
                       <img
-                        src="assets/img/profile.jpg"
+                        src={mainStatus.image}
                         alt="image profile"
                         className="avatar-img rounded"
                       />
                     </div>
                     <div className="u-text">
-                      <h4>Hizrian</h4>
-                      <p className="text-muted">hello@example.com</p>
+                      <h4>{mainStatus.name}</h4>
                       <Link
-                        to="profile.html"
+                        to="/myProfile"
                         className="btn btn-xs btn-secondary btn-sm"
                         >View Profile</Link>
                     </div>
@@ -387,7 +388,7 @@ function Header()
                 </li>
                 <li>
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="#">My Profile</Link>
+                  <Link className="dropdown-item" to="/myProfile">My Profile</Link>
                   <Link className="dropdown-item" to="#">My Balance</Link>
                   <Link className="dropdown-item" to="#">Inbox</Link>
                   <div className="dropdown-divider"></div>

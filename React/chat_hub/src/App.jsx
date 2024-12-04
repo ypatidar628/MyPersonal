@@ -16,6 +16,7 @@ function App(){
   var navigate = useNavigate();
 
   const mainStatus = useSelector(state=>state.userData.value);
+  
   useEffect(()=>{
       console.log("main status2"+mainStatus.isLoginStatus)
       if(mainStatus.isLoginStatus==false){
