@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import WebService from "./service/WebService";
 import WebAPI from "./service/WebAPI";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { checkStatus } from "./redux/userSlice";
 import "../components/Login.css"
 import { toast, ToastContainer } from "react-toastify";
@@ -12,12 +12,14 @@ function Login(){
     const [msg,setMessage] = useState();
 
     const dispatch = useDispatch();
+    const userData = useSelector(state=>state.userData.value);
+
     const navigate = useNavigate();
 
     var email = useRef();
     var password = useRef();
 
-
+    
     var loginUser = async(event)=>{
         event.preventDefault();
         var em = email.current.value;
@@ -28,9 +30,11 @@ function Login(){
 
         var response = await WebService.postAPICall(WebAPI.loginAPI,obj);
 
-        // console.log(response);
+        console.log(response);
 
-        // console.log(JSON.stringify(response));
+        console.log(JSON.stringify(response));
+        
+        
 
         if(response.data.status)
             {
@@ -46,9 +50,9 @@ function Login(){
             toast.error("invalid login !")
             // setMessage(response.data.message);
         }
-      }
+    }
 
-    return<div className="log-container">
+    return<div className="log-container" >
     <div className="login-container">
     <div className="row text-center ">
         <h1 className="login-title">Login Here !</h1>

@@ -1,40 +1,92 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import WebAPI from "../service/WebAPI";
 import WebService from "../service/WebService";
+import { useNavigate } from "react-router-dom";
 
  function MyPost(){
     
-    const userData = useSelector(state=>state.userData.value); 
-    const [postData,setPostData] = useState([]);
+    
+  const userData = useSelector(state=>state.userData.value);
+  const [myPost,setMyPost] = useState([])
+  const navigate = useNavigate();
+  
+    var msg = useRef();
+    var fileData = useRef();
 
-    useEffect(()=>{
-        loadAllUserPosts();
-    })
+   useEffect(()=>{
+      loadMyPostList();
+   })
 
-    var loadAllUserPosts = async ()=>{
-      var resp = await WebService.getAPICall(WebAPI.allUserPostsAPI,userData.token);
-      console.log("User Post : "+resp);
-      console.log("User Post List : "+JSON.stringify(resp));
-      if(resp.data.status)
+   var loadMyPostList = async ()=>{
+      var resp = await WebService.getAPICall(WebAPI.loginUserPost ,userData.token);
+    //  console.log("My Post Response is : "+resp);
+    //  console.log("My Post Response is : "+JSON.stringify(resp));
+     if(resp.data.status)
       {
-         setPostData(resp.data.data);
+        //  console.log("Hello.....");
+        setMyPost(resp.data.data);
       }
     }
 
+   var uploadPost = async (event)=>{
+       event.preventDefault();
+       var resp = "";
+
+       var message = msg.current.value;
+       var upload_file_post = fileData.current.files[0];
+       const f_data = new FormData();
+
+       //If Media Upload
+       if(upload_file_post != undefined)
+       {
+           f_data.append('image',upload_file_post);
+           f_data.append('message',message);
+           resp = await WebService.postAPICallUsingUploadData(WebAPI.uploadPost,userData.token,f_data);
+       }
+       else
+      {
+        //Media No Upload
+        var obj = {message:message}
+        resp = await WebService.postAPICallUsingUploadData(WebAPI.uploadPost,userData.token,obj);
+      }
+      // console.log("Response is : "+resp);
+      // console.log("String Response is : "+JSON.stringify(resp));
+      if(resp.data.status)
+      {
+        navigate("/myPost")
+      }
+     }
 
     return<div className="container">
-    <div className="page-inner">
-        <div className="page-header">
-            <h3 className="fw-bold mb-3">User Posts</h3>
-        </div>
-        {postData.map((post,index)=>{
+     <div className="page-inner">
+      <div className="page-header">
+        <div className="container"> 
+          <h1 style={{textAlign:'center',color:'red'}}>Upload Posts</h1> 
+        <form onSubmit={uploadPost}>    
+           <div className="row form-group">
+             <textarea className="form-control" rows="8" ref={msg} placeholder="Write Any Content"></textarea>
+            </div>
+            <div className="row form-group">
+              <input type="file" className="form-control" ref={fileData}/>
+            </div>
+            <div className="form-group">
+                <button className="btn btn-success form-control" type="submit">
+                    Upload Posts
+                </button>
+            </div>
+            </form>  
+
+            <hr/>
+            <h1 style={{textAlign:'center',color:'red'}}>
+                My Previous Posts
+            </h1>
+            {myPost.map((post)=>{
               return<div className="row">
               <div className="col-md-12">
                   <div className="card">
                       <div className="card-header">
                           <h4 className="card-title">
-                              {post.postBy.name}<br/>
                               {post.postdate}<br/>
                           </h4>
                       </div>
@@ -57,7 +109,9 @@ import WebService from "../service/WebService";
               </div>
           </div>
         })}
+        </div>
+      </div>
+     </div>
     </div>
-</div>
 }
 export default MyPost;

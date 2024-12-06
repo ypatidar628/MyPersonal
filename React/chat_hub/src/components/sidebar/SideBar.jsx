@@ -87,7 +87,11 @@ function SideBar() {
                       <span className="sub-item">My Profile</span>
                     </Link>
                   </li>
-
+                  <li>
+                  <Link to="/changePassword">
+                    <span className="sub-item">Change Password</span>
+                  </Link>
+                </li>
                   <li>
                     <Link  onClick={(event)=>{
                    logoutUser(event);

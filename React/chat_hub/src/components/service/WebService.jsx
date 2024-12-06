@@ -20,5 +20,9 @@ class WebService
         var result = axios.put(url,data,{ headers: { Authorization: `Bearer ${token}` } })
         return result;
     }
+    postAPICallUsingUploadData(url,token,data){
+        const result = axios.post(url,data,{ headers: { Authorization: `Bearer ${token}` } })
+        return result;
+    }
 }
 export default new WebService();

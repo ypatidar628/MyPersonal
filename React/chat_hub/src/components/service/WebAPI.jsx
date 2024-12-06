@@ -4,5 +4,8 @@ export default{
     allUserListAPI:'http://tutorials.codebetter.in:7084/api/user/list',
     allUserPostAPI:'http://tutorials.codebetter.in:7084/api/post/list',
     loginUserProfile:'http://tutorials.codebetter.in:7084/api/user/me',
-    uploadProfilePic:'http://tutorials.codebetter.in:7084/api/user/uploadpic'
+    uploadProfilePic:'http://tutorials.codebetter.in:7084/api/user/uploadpic',
+    uploadPost:'http://tutorials.codebetter.in:7084/api/post/save',
+    loginUserPost:'http://tutorials.codebetter.in:7084/api/post/mypost',
+    changePassword:'http://tutorials.codebetter.in:7084/api/user/changepassword'
 }

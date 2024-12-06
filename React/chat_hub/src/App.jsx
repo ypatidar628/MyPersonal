@@ -11,6 +11,7 @@ import Register from "./components/Register.jsx";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import UserHome01 from "./components/user/UserHome01.jsx";
+import ChangePassword from "./components/user/ChangePassword.jsx";
 
 function App(){
   var navigate = useNavigate();
@@ -21,8 +22,8 @@ function App(){
       console.log("main status2"+mainStatus.isLoginStatus)
       if(mainStatus.isLoginStatus==false){
         navigate("/")
-      }
-      
+    }
+    
    },[mainStatus])
 
   return <div className="wrapper">
@@ -37,12 +38,14 @@ function App(){
           <Route path="/myPost" element={<MyPost/>}></Route>
           <Route path="/myProfile" element={<MyProfile/>}></Route>
           <Route path="/logout" element={<Logout/>}></Route>
+          <Route path="/changePassword" element={<ChangePassword/>}></Route>
         </Routes>
       </div>
       :
     <Routes>
       <Route  path="/" element={<Login/>}></Route>
       <Route  path="/register" element={<Register/>}></Route>
+
     </Routes>
  }
   </div>
