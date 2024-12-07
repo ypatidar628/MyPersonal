@@ -24,12 +24,14 @@ import 'react-toastify/dist/ReactToastify.css';
       var resp = await WebService.getAPICall(WebAPI.loginUserPost ,userData.token);
     //  console.log("My Post Response is : "+resp);
     //  console.log("My Post Response is : "+JSON.stringify(resp));
-     if(resp.data.status)
-      {
-        //  console.log("Hello.....");
-        setMyPost(resp.data.data);
-      }
-    }
+    
+    var response = resp.data.data.reverse();
+    if(resp.data.status)
+     {
+       //  console.log("Hello.....");
+       setMyPost(response);
+     }
+   }
 
    var uploadPost = async (event)=>{
        event.preventDefault();

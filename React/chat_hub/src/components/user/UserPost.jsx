@@ -18,9 +18,9 @@ function UserPost(){
         var resp = await WebService.getAPICall(WebAPI.allUserPostAPI,userData.token);
         // console.log("posts is :"+resp);
         // console.log("posts is :"+JSON.stringify(resp));
-
+var response = resp.data.data.reverse();
         if(resp.data.status){
-            setUserPost(resp.data.data);
+            setUserPost(response);
         }
         
     }
