@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import WebAPI from "../service/WebAPI";
 import WebService from "../service/WebService";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify"; 
+import 'react-toastify/dist/ReactToastify.css';
 
  function MyPost(){
     
@@ -50,12 +52,21 @@ import { useNavigate } from "react-router-dom";
         var obj = {message:message}
         resp = await WebService.postAPICallUsingUploadData(WebAPI.uploadPost,userData.token,obj);
       }
-      // console.log("Response is : "+resp);
-      // console.log("String Response is : "+JSON.stringify(resp));
-      if(resp.data.status)
-      {
+      console.log("Response is : "+resp);
+      console.log("String Response is : "+JSON.stringify(resp));
+      if(resp.data.status){
+        toast.success("Successfully Post")
+      }
+      else if (resp.data.status){
         navigate("/myPost")
       }
+      clearField();
+    }
+    var clearField = ()=>{
+      
+      var message = msg.current.value="";
+      var upload_file_post = fileData.current.value="";
+
      }
 
     return<div className="container">
@@ -112,6 +123,7 @@ import { useNavigate } from "react-router-dom";
         </div>
       </div>
      </div>
+     <ToastContainer/>
     </div>
 }
 export default MyPost;

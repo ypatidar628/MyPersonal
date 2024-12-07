@@ -19,12 +19,12 @@ function App(){
   const mainStatus = useSelector(state=>state.userData.value);
   
   useEffect(()=>{
-      console.log("main status2"+mainStatus.isLoginStatus)
+      console.log("main status2"+mainStatus.isLoginStatus);
       if(mainStatus.isLoginStatus==false){
         navigate("/")
     }
     
-   },[mainStatus])
+   },[])
 
   return <div className="wrapper">
    {(mainStatus.isLoginStatus) ?    

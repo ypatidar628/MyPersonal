@@ -30,9 +30,9 @@ function Login(){
 
         var response = await WebService.postAPICall(WebAPI.loginAPI,obj);
 
-        console.log(response);
+        // console.log(response);
 
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response));
         
         
 

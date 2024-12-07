@@ -18,10 +18,7 @@ function ChangePassword()
     var old_password = useRef();
    var new_password = useRef();
  
-   var info;
-  //   useEffect=()=>{
-  //   info();
-  //  }
+
    var changePassword = async (event)=>{
      event.preventDefault();
  
@@ -33,14 +30,14 @@ function ChangePassword()
 
  
      var resp = await WebService.putAPICall(WebAPI.changePassword,obj,userData.token)
-     console.log("Pass Resp is : "+resp);
-     console.log("String Pass Resp is : "+JSON.stringify(resp)); 
+    //  console.log("Pass Resp is : "+resp);
+    //  console.log("String Pass Resp is : "+JSON.stringify(resp)); 
      if(resp.data.status)
          {
            toast.success(" password change Success")
 
            setInterval(() => {
-             info ={...resp.data.data,isLoginStatus:false}
+            var info ={...resp.data.data,isLoginStatus:false}
             dispatch(checkStatus(info))
             navigate("/")
             

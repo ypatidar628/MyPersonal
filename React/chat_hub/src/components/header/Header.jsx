@@ -1,11 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { checkStatus } from "../redux/userSlice";
+import { toast, ToastContainer } from "react-toastify"; 
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
 
 function Header()
 {
     var mainStatus = useSelector(state=>state.userData.value);
-
+    useEffect(()=>{
+        if(mainStatus){
+            toast.success("success")
+        }
+    },[mainStatus])
+    
 
   var logoutUser = (event)=>{
     
@@ -404,6 +412,7 @@ function Header()
         </ul>
       </div>
     </nav>
+    <ToastContainer/>
   </div>
 }
 
