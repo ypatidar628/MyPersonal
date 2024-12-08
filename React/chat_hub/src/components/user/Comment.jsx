@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import WebService from "../service/WebService";
 import WebAPI from "../service/WebAPI";
 import "../../components/user/UserPost.css"
+import { Link } from "react-router-dom";
 
 
 function Comment() {
   const userData = useSelector(state => state.userData.value);
   const [UserPost, setUserPost] = useState([]);
   const [UserListData, setUserListData] = useState([]);
+  // var navigate = useNavigate();
 
   useEffect(() => {
     loadAllPost();
@@ -20,21 +22,22 @@ function Comment() {
     // console.log("posts is :"+resp);
     // console.log("posts is :"+JSON.stringify(resp.data.data));
     if (resp.data.status) {
-      setUserPost(resp.data.data);
+      setUserPost(resp.data.data.reverse());
+      // navigate("/comment")
 
     }
   }
 
   var loadCommentUser = async () => {
     var resp = await WebService.getAPICall(WebAPI.allUserListAPI, userData.token)
-    setUserListData(resp.data.data)
+    setUserListData(resp.data.data.reverse())
   }
 
 
   return <div className="container">
     <div className="page-inner">
       <div className="page-header">
-        <h3 className="fw-bold mb-3">Comments </h3>
+        <h3 className="fw-bold mb-3 text">Comments </h3>
       </div>
       {UserPost.map((post, index) => {
          const date = post.postdate;
@@ -80,13 +83,15 @@ function Comment() {
                         {/* <b>{p.createdAt ? new Date(p.createdAt).toLocaleString() : 'Date not available'}</b> */}
                         <b className="date">{p.createdAt ? formattedDate : 'not found'}</b>
 
-                        <p><b className="comments">Comment : </b> <b style={{fontSize:'18px', color:'black'}}>{p.comment}</b></p>
+                        <p><b className="comments">Comment : </b> <b style={{fontSize:'18px', color:'#395c73'}}>{p.comment}</b></p>
                       </div>
                     })}
                   
 
                 
-              <button  className="put-link" >Put Your Comments</button>
+              <button  className="put-link" >
+                <Link to="/sendComment">Send Comments</Link>
+                </button>
             
             </div>
             <br /><hr /><br />

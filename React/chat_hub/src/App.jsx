@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import UserHome01 from "./components/user/UserHome01.jsx";
 import ChangePassword from "./components/user/ChangePassword.jsx";
 import Comment from "./components/user/Comment.jsx";
+import SendComment from "./components/user/SendComment.jsx";
 
 function App(){
   var navigate = useNavigate();
@@ -41,6 +42,7 @@ function App(){
           <Route path="/logout" element={<Logout/>}></Route>
           <Route path="/changePassword" element={<ChangePassword/>}></Route>
           <Route path="/comment" element={<Comment/>}></Route>
+          <Route path="/sendComment" element={<SendComment/>}></Route>
         </Routes>
       </div>
       :
