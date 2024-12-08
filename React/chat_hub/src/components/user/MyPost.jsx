@@ -70,12 +70,13 @@ import 'react-toastify/dist/ReactToastify.css';
       var upload_file_post = fileData.current.value="";
 
      }
+     
 
     return<div className="container">
      <div className="page-inner">
       <div className="page-header">
         <div className="container"> 
-          <h1 style={{textAlign:'center',color:'red'}}>Upload Posts</h1> 
+          <h1 style={{textAlign:'center'}}>Upload Posts</h1> 
         <form onSubmit={uploadPost}>    
            <div className="row form-group">
              <textarea className="form-control" rows="8" ref={msg} placeholder="Write Any Content"></textarea>
@@ -91,37 +92,37 @@ import 'react-toastify/dist/ReactToastify.css';
             </form>  
 
             <hr/>
-            <h1 style={{textAlign:'center',color:'red'}}>
+            <h1 style={{textAlign:'center'}}>
                 My Previous Posts
             </h1>
-            {myPost.map((post)=>{
-              return<div className="row">
-              <div className="col-md-12">
-                  <div className="card">
-                      <div className="card-header">
-                          <h4 className="card-title">
-                              {post.postdate}<br/>
-                          </h4>
-                      </div>
-                      <div className="card-body">
-                          <div className="tab-content mt-2 mb-3" id="pills-tabContent">
-                            <div className="row">
-                               <div className="col-md-2 well">
-                                  <img src={post.postfile} height={80} width={80} className="img-circle"/>
-                                </div> 
-                                <div className="col-md-10">
-                                   <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                      <p>{post.message}</p>
-                                   </div>
-                                </div>
-                            </div>
-                              
-                          </div>
-                      </div>
+            {myPost.map((post,index)=>{
+               const date = post.postdate;
+               const date_only = new Date(date).toISOString().split("T")[0];
+               return (
+                <div className="posts-container">
+                <div className="post-card" key={index}>
+                  <div className="post-header">
+                    <div className="user-info">
+                      {/* <h4 className="username">{post.postBy.name}</h4> */}
+                      <span className="post-date">{date_only}</span>
+                    </div>
                   </div>
-              </div>
-          </div>
-        })}
+                  
+                  <div className="post-image">
+                    <img src={post.postfile} alt="Post" />
+                  </div>
+                  <hr className="hr"/>
+                  <div className="post-content">
+                    <p className="description">Description : </p>
+                    <p className="post-message">{post.message}</p>
+                    {/* <Link to="/comment" className="comment-link">
+                      View all comments
+                    </Link> */}
+                  </div>
+                </div>
+                </div>
+              );
+            })}
         </div>
       </div>
      </div>

@@ -24,5 +24,10 @@ class WebService
         const result = axios.post(url,data,{ headers: { Authorization: `Bearer ${token}` } })
         return result;
     }
+    postAPICall_second(url,token,data){
+        const result = axios.post(url,data,{ headers: { Authorization: `Bearer ${token}` } })
+        return result;
+    }
+    
 }
 export default new WebService();

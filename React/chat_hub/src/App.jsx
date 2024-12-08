@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import UserHome01 from "./components/user/UserHome01.jsx";
 import ChangePassword from "./components/user/ChangePassword.jsx";
+import Comment from "./components/user/Comment.jsx";
 
 function App(){
   var navigate = useNavigate();
@@ -39,6 +40,7 @@ function App(){
           <Route path="/myProfile" element={<MyProfile/>}></Route>
           <Route path="/logout" element={<Logout/>}></Route>
           <Route path="/changePassword" element={<ChangePassword/>}></Route>
+          <Route path="/comment" element={<Comment/>}></Route>
         </Routes>
       </div>
       :

@@ -7,5 +7,6 @@ export default{
     uploadProfilePic:'http://tutorials.codebetter.in:7084/api/user/uploadpic',
     uploadPost:'http://tutorials.codebetter.in:7084/api/post/save',
     loginUserPost:'http://tutorials.codebetter.in:7084/api/post/mypost',
-    changePassword:'http://tutorials.codebetter.in:7084/api/user/changepassword'
+    changePassword:'http://tutorials.codebetter.in:7084/api/user/changepassword',
+    commentAPI:'http://tutorials.codebetter.in:7084/api/comment/save'
 }
