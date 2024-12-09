@@ -11,22 +11,28 @@ function Comment() {
   const [UserPost, setUserPost] = useState([]);
   const [UserListData, setUserListData] = useState([]);
   const [UserCommData, setUserCommData] = useState([]);
+  const [userList, setUserList] = useState([]);
+  const [name,setName]  = useState();
+  const [comments, setComments] = useState({});
+
   // var navigate = useNavigate();
   var com = useRef({});
 // var token = userData.token;
   useEffect(() => {
     loadAllPost();
     loadCommentUser()
+    loadAllUserData();
     
   },[])
 
   var loadAllPost = async () => {
     var resp = await WebService.getAPICall(WebAPI.allUserPostAPI, userData.token);
     // console.log("posts is :"+resp);
-    // console.log("posts is :"+JSON.stringify(resp.data.data));
+    // console.log("posts is :"+JSON.stringify(resp));
+
+
     if (resp.data.status) {
       setUserPost(resp.data.data);
-      // navigate("/comment")
 
     }
   }
@@ -40,29 +46,50 @@ function Comment() {
     }
   }
 
+  const handleCommentChange = (event, postId) => {
+    setComments((prev) => ({
+      ...prev,
+      [postId]: event.target.value,
+    }));
+  };
+
   //Comment post function
   const sendComment = async (event,id) => {
  
     event.preventDefault();
     var comm = com.current[id].value; 
-    // console.log("msg"+comm);
 
 var obj = { comment : comm, post : id  };
 
  const resp = await WebService.postAPICallUsingUploadData(WebAPI.commentAPI, userData.token, obj);
-//  console.log("Response:", resp);
  console.log("Response:", JSON.stringify(resp))
+ 
+
  
  if (resp.data.status) {
    setUserCommData(resp.data.data); 
-   // navigate("/comment")
    loadAllPost();
+   loadAllUserData();
  }
  else{
   console.error("Faield to post comment")
  }
 
 };
+
+var loadAllUserData = async () => {
+  var resp = await WebService.getAPICall(WebAPI.allUserListAPI,userData.token);
+  // console.log("User List is : " + resp);
+  {userList.map((data,index)=>{
+    // console.log("id : "+data.id)
+    console.log("id : "+data.id+"  Name : "+data.name)
+    setName(data.id,data.name);
+  })}
+  if (resp.data.status) {
+    setUserList(resp.data.data);
+  }
+};
+
 
 
   return <div className="container">
@@ -81,6 +108,7 @@ var obj = { comment : comm, post : id  };
               <div className="user-info">
                 <h4 className="username">{post.postBy.name}</h4>
                 <span className="post-date">{post.postdate ? formattedDate1 : 'not found'}</span>
+            
               </div>
             </div>
 
@@ -98,18 +126,24 @@ var obj = { comment : comm, post : id  };
                     <br />
 
                     {post.comments.map((p) => {
+                      // console.log("sender : "+p.sender);
                       
-                      const commenter = UserListData.find(user => p.id == user.id)
-                    
+                      const commenter = UserListData.find(user => user.id === p.sender);;
+
+                      // UserListData.find(user => p.sender == name.id)
+                      
                       const createdAt = new Date(p.createdAt);
                       const formattedDate = `${String(createdAt.getDate()).padStart(2, '0')}/${String(createdAt.getMonth()).padStart(2, '0')}/${createdAt.getFullYear()}`;
 
-                      return <div className="d_div" key={p.id}>
+                      return <div className="d_div" key={p.id}> 
 
-                        {commenter ?
-                          <h5 className="uname">User Name : <span className="commenter">{commenter.name}</span> </h5>
-                          : 
-                          <span style={{fontSize:'16px'}}>User Not Found : </span>}
+
+{commenter ? (
+  <h5 className="uname">User Name: <span className="commenter">{commenter.name}</span></h5>
+) : (
+  <span style={{ fontSize: '16px' }}>User Not Found</span>
+)}
+                        
                          
                         {/* <b>{p.createdAt ? new Date(p.createdAt).toLocaleString() : 'Date not available'}</b> */}
                         <b className="date">{p.createdAt?formattedDate:'not found'}</b>
@@ -125,15 +159,12 @@ var obj = { comment : comm, post : id  };
         <input type="text" className="form-control" placeholder="Enter Your Comment" ref={(el)=>{com.current[post.id]=el}}/>
         <br />
         <br />
-        <button type="submit" className="btn btn-success form-control">
+        <button type="submit" className="put-link">
           Submit Comment
         </button>
       </form>
 </div>
                 
-              <button  className="put-link" >
-                <Link to="/sendComment">Send Comments</Link>
-                </button>
             
                
             </div>
@@ -145,7 +176,6 @@ var obj = { comment : comm, post : id  };
       
     </div>
 
-    {/* comment  post form  */}
 
 
   </div>

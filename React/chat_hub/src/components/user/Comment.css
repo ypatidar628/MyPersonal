@@ -74,11 +74,17 @@
     font-size: 14px;
     font-weight: 600;
     margin-top: 8px;
-    margin-left: 550px;
+    margin-left: 310px;
     margin-bottom: 10px;
     padding: 8px 16px;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: ease-in  0.3s;
+}
+.put-link:hover{
+    color: #00376b;
+    background-color: #f0f2f5;
+    transform: scale(1.2);
+    
 }
 
 .comment-link:hover {
@@ -91,8 +97,8 @@
 
 .commenter{
     margin-left: 5px;
-    color: #cb3e3e;
-    font-size: 25px;
+    color: #dd5f5f;
+    font-size: 20px;
     font-weight: 600;
     margin: 0;
 }
@@ -107,11 +113,6 @@
     color: #6e6e6e;
 
 }
-/* hr{
-    color: ;
-    border:1px solid ;
-    box-shadow:0px 3px 3px #395c73;
-} */
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
