@@ -16,11 +16,6 @@
     padding: 14px 16px;
     border-bottom: 1px solid #efefef;
 }
-.hr{
-    /* color: ; */
-    border:2px solid ;
-    box-shadow:0px 3px 3px #395c73;
-}
 
 .user-info {
     display: flex;
