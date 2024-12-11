@@ -1,3 +1,4 @@
+d = {} # this  is a empty dictionary
 marks = {
     "yogendra":97,
     "Saksham":77,
@@ -14,4 +15,4 @@ marks = {
 # print(marks.get("yogendra"))
 
 print(marks.get("yogendra2")) #Prints none
-print(marks["yogendra2"]) #Returns an error
+print(marks["yogendra2"]) #Returns an errormarks = {
