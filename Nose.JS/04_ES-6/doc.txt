@@ -1,0 +1,184 @@
+ES-6 : It stands for ECMA Standard
+     : It is ECMA script standard which was launched in year 2015 & all versions follow same approach to 
+	   write code blocks
+
+ES5 <= : @2014 -> object based OO
+
+ES6 >= : @2015 -> class based OO
+
+Latest version : @2022 ES13
+                 @2023 ES14 
+				 
+===========================================================
+Major Features : 
+
+1. let and const Keywords
+2. Arrow Functions
+3. Multi-line Strings
+4. Default Parameters
+5. Template Literals
+6. Destructuring Assignment
+7. Enhanced Object Literals
+8. Promises
+9. Classes
+10. Modules
+11. Implementation of rest & spread operator (...)	
+12. Transpilers & Transpilation :
+
+
+========================================================================
+=>1. let & const Keywords : 
+
+    let i = 10;   //Block Scopic Variable : Msotly used with in a control statenments.
+    console.log(i);   //Output 10
+
+    const PI = 3.14;  //It is used to create a constant variable: variable value cannot  change.
+    console.log(PI);  //Output 3.14			 
+	
+=>2. Arrow Functions : ES6 provides a feature known as Arrow Functions. 
+                   :  It provides a more concise syntax for writing function expressions by removing the 
+					 "function" and "return" keywords.
+                      Arrow functions are defined using the fat arrow (=>) notation	
+					  
+	Ex : let sumOfTwoNumbers = (a, b) => a + b;
+         console.log(sum(10, 20)); // Output 30				  
+		 
+=>3. Multi-Line String : 
+
+   Write String In ES-5 or Normal way
+   Var name = "Hello Students Welcome to Code Better."	
+
+In ES- 6 Write String : ES6 also provides Multi-line Strings. Users can create multi-line strings by using back-ticks(`). 
+var name = `Hello Students,     
+                Welcome to ,
+                Code Better`  
+				
+=>4. Default Parameters : 
+     
+    In ES-5
+   var calculateArea = function(height, width) {  
+      height =  height || 50;
+      width = width || 80;
+      // logic
+   }	 
+   
+    In ES-6
+	let calculateArea = function(height = 100, width = 50) {  
+    // logic
+}
+
+=>5. Template Literals : ES6 introduces very simple string templates along with placeholders for the variables.
+                      The syntax for using the string template is ${PARAMETER} and is used inside of the back-ticked string.
+	
+   Ex : let name = `My name is ${firstName} ${lastName}`
+
+=>6 Destructuring Assignment : Destructuring is one of the most popular features of ES6. The destructuring assignment is 
+                               an expression that makes it easy to extract values from arrays, 
+							   or properties from objects, into distinct variables 
+                            
+							: There are two types of destructuring assignment expressions, namely, 
+                               1. Array Destructuring 
+							   2. Object Destructuring.   
+							   
+	Ex : //Array Destructuring
+         let fruits = ["Apple", "Banana"];
+         let [a, b] = fruits; // Array destructuring assignment
+         console.log(a, b);
+
+         //Object Destructuring
+         let person = {name: "Peter", age: 28};
+         let {name, age} = person; // Object destructuring assignment
+         console.log(name, age);		
+
+=>7	 Enhanced Object Literals : ES6 provides enhanced object literals which make it easy to quickly create objects
+                                with properties inside the curly braces.	 
+								
+		Ex : function getMobile(manufacturer, model, year) {
+             return {
+                      manufacturer,
+                      model,
+                      year
+                    }
+        }
+        getMobile("Samsung", "Galaxy", "2020");	
+
+=> 8 Promises : In ES6, Promises are used for asynchronous execution.
+                 We can use promise with the arrow function as demonstrated below.
+
+        var asyncCall =  new Promise((resolve, reject) => {
+             // do something
+             resolve();
+        }).then(()=> {   
+            console.log('DON!');
+        })		
+		
+=> 9  Classes : classes never existed in JavaScript. Classes are introduced in ES6 which looks similar to classes in
+                other object-oriented languages, such as C++, Java, PHP, etc. But, they do not work exactly the same way. 
+               ES6 classes make it simpler to create objects, implement inheritance by using the "extends" keyword and 
+			   also reuse the code efficiently.		
+			   
+		Ex : class UserProfile {   
+             constructor(firstName, lastName) { 
+             this.firstName = firstName;
+             this.lastName = lastName;     
+            }  
+    
+        getName() {       
+            console.log(`The Full-Name is ${this.firstName} ${this.lastName}`);    
+        } 
+    }
+    let obj = new UserProfile('John', 'Smith');
+    obj.getName(); // output: The Full-Name is John Smith	   
+	
+10. Modules : ES6 introduced a new feature called modules, in which each module is represented by a separate ".js" file. 
+              We can use the "import" or "export" statement in a module to import or export variables, functions, 
+			  classes or any other component from/to different files and modules.
+     
+	Ex : File1.js
+	     export var num = 50; 
+         export function getName(fullName) {   
+          //data
+         }; 
+    
+        File2.js	
+		import {num, getName} from 'module'; 
+or 
+import {num,getName} from './File1.js'
+        console.log(num); // 50
+		
+11. Transpilers & Transpilation :  Transpilation is a process to convert ES6 compatible code to ES5
+ compatible code & module which make conversion is transpiler.		
+ 
+ abel : transpiler (task runner) 
+webpack : task bundeller
+
+		  execute 
+    source code ----------> platform	
+	(ES5)         (browser,node env)
+
+	
+      transpilation          execute  
+ source  --------->    ES5    ---->   platform
+  code             	       
+ (ES6)                                (browser,node env)
+
+============================================================
+ES-6 Setup Envirnomnet CMD
+
+npm init -y
+npm install @babel/core
+npm install @babel/node
+npm install @babel/preset-env
+npm install babel-plugin-add-module-exports
+
+Some Change in Package.json File : 
+
+Include Below Lines 
+
+  "type":"module",
+  "scripts": {
+    "dev": "nodemon --exec babel-node"
+  },
+  
+Application Run : nodemon run dev filName.js 
+===================================================
