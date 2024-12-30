@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "./component/img/footer-logo.png";
+import logo from '../src/component/img/brandLogo.png';
 import payment from "./component/img/payment.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faEnvelopeCircleCheck } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ function Footer() {
                         <div className="col-lg-3 col-md-6 col-sm-6">
                             <div className="footer__about">
                                 <div className="footer__logo">
-                                    <Link to="#"><img src={logo} alt=""></img></Link>
+                                    <Link to="#"><img src={logo} alt="" width={100}></img></Link>
 
                                 </div>
                                 <p>The customer is at the heart of our unique business model, which includes design.</p>

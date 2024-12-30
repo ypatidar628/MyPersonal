@@ -136,6 +136,18 @@ ol {
 	background-size: cover;
 	background-position: top center;
 }
+.set-bg1{
+	background-image: url("../img/hero/hero-1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+.set-bg2{
+	background-image: url("../img/hero/hero-2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
 
 .spad {
 	padding-top: 100px;
@@ -319,7 +331,10 @@ ol {
 	background-color: #3b5d50 ;
 	height: 80px;
 }
-
+@media screen and (max-width: 991px) {
+	
+	
+}
 
 .header__top {
 	background: #111111;
@@ -503,25 +518,25 @@ ol {
 	color: #ffffffa3;
 	display: block;
 	font-weight: 600;
-	position: relative;
+	/* position: relative; */
 	padding: 3px 0;
 	text-decoration: none;
 }
-
-.header__menu ul li a:after {
-	position: absolute;
+.header__menu ul li a:after{
+-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+}
+.header__menu ul li a:hover {
 	left: 0;
 	bottom: 0;
 	width: 100%;
 	height: 3px;
 	background: #f9b929;
-	content: "";
 	-webkit-transition: all, 0.5s;
 	-o-transition: all, 0.5s;
 	transition: all, 0.5s;
-	-webkit-transform: scale(0);
-	-ms-transform: scale(0);
-	transform: scale(0);
+	
 }
 
 .header__nav__option {
@@ -608,7 +623,7 @@ ol {
 
 .hero__items {
 	height: 800px;
-	padding-top: 230px;
+	/* padding-top: 230px; */
 }
 
 .hero__text h6 {
@@ -620,7 +635,7 @@ ol {
 	margin-bottom: 28px;
 	position: relative;
 	top: 100px;
-	opacity: 0;
+	/* opacity: 0; */
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
@@ -634,7 +649,7 @@ ol {
 	margin-bottom: 30px;
 	position: relative;
 	top: 100px;
-	opacity: 0;
+	/* opacity: 0; */
 	-webkit-transition: all, 0.6s;
 	-o-transition: all, 0.6s;
 	transition: all, 0.6s;
@@ -646,7 +661,7 @@ ol {
 	margin-bottom: 35px;
 	position: relative;
 	top: 100px;
-	opacity: 0;
+	/* opacity: 0; */
 	-webkit-transition: all, 0.9s;
 	-o-transition: all, 0.9s;
 	transition: all, 0.9s;
@@ -655,7 +670,7 @@ ol {
 .hero__text .primary-btn {
 	position: relative;
 	top: 100px;
-	opacity: 0;
+	/* opacity: 0; */
 	-webkit-transition: all, 1.1s;
 	-o-transition: all, 1.1s;
 	transition: all, 1.1s;
@@ -3390,15 +3405,16 @@ ol {
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
-@media only screen and (min-width: 1200px) {
+/* @media only screen and (min-width: 1200px) {
 	.container {
 		max-width: 1170px;
 	}
-}
+} */
 
 /* Medium Device = 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
+	
 	.categories__text h2 {
 		font-size: 26px;
 	}

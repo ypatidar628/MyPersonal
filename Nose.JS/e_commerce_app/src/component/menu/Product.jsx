@@ -2,9 +2,11 @@ import React from "react";
 import "../css/Product.css";
 import { Link } from "react-router-dom";
 
+
 function Product() {
   return (
     <div className="main-div">
+
       <div className="sidebar">
         {/* Filter and Search */}
         <div className="filter-search-container">
@@ -45,6 +47,8 @@ function Product() {
           <li><Link> Accessories </Link></li>
         </ul>
       </div>
+
+
       {/* All content div start */}
       <div className="main-content">
         <h1>Hello</h1>
