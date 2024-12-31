@@ -1,22 +1,28 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-// import "./component/menu/Login.css"
 import "../css/Register.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightToBracket, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function Register() {
-    var name = useRef();
-    var email = useRef();
-    var password = useRef();
-    var phone = useRef();
-    var gender = useRef();
+    const [showPassword, setShowPassword] = useState(false);
+    const name = useRef();
+    const email = useRef();
+    const password = useRef();
+    const phone = useRef();
+    const gender = useRef();
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
 
     return (
         <div className="log-container2">
             <div className="register-container2">
                 <div className="row text-center">
-                    <h1 className="register-title2">Register Here <FontAwesomeIcon icon={faRightToBracket} /></h1>
+                    <h2 className="register-title2">
+                        Register Here <FontAwesomeIcon icon={faRightToBracket} />
+                    </h2>
                 </div>
                 <form
                     onSubmit={(event) => {
@@ -24,7 +30,7 @@ function Register() {
                     }}
                 >
                     <div className="form-group2">
-                        <label htmlFor="name" className="label2">Enter Name:</label>
+                        <label htmlFor="name" className="label2">Enter Name :</label>
                         <input
                             type="text"
                             id="name"
@@ -38,7 +44,7 @@ function Register() {
                         <div className="error2" id="nameError">Please enter a valid name</div>
                     </div>
                     <div className="form-group2">
-                        <label htmlFor="email" className="label2">Email Address:</label>
+                        <label htmlFor="email" className="label2">Email Address :</label>
                         <input
                             type="email"
                             id="email"
@@ -52,21 +58,31 @@ function Register() {
                         <div className="error2" id="emailError">Please enter a valid email address</div>
                     </div>
                     <div className="form-group2">
-                        <label htmlFor="password" className="label2">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            className="input2"
-                            placeholder="Enter your password"
-                            ref={password}
-                            required
-                            aria-describedby="passwordError"
-                        />
+                        <label htmlFor="password" className="label2">Password :</label>
+                        <div className="input-container">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                name="password"
+                                className="input2"
+                                placeholder="Enter your password"
+                                ref={password}
+                                required
+                                aria-describedby="passwordError"
+                            />
+                            <button
+                                type="button"
+                                className="toggle-password-btn"
+                                onClick={togglePasswordVisibility}
+                                aria-label="Toggle password visibility"
+                            >
+                                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                            </button>
+                        </div>
                         <div className="error2" id="passwordError">Password must be at least 6 characters</div>
                     </div>
                     <div className="form-group2">
-                        <label htmlFor="phone" className="label2">Phone:</label>
+                        <label htmlFor="phone" className="label2">Phone :</label>
                         <input
                             type="text"
                             id="phone"
@@ -80,7 +96,8 @@ function Register() {
                         <div className="error2" id="phoneError">Please enter a valid phone number</div>
                     </div>
                     <div className="row form-group2">
-                        <select className="form-control  select2" ref={gender}>
+                    <label htmlFor="phone" className="label2">Gender :</label>
+                        <select className="form-control select2" ref={gender}>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
@@ -96,7 +113,6 @@ function Register() {
                     </span>
                     <br />
                 </form>
-                {/* <span style={{color:'red'}}>{msg}</span> */}
             </div>
         </div>
     );

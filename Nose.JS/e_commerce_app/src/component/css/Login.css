@@ -16,17 +16,18 @@
     background-color: #3b5d50;
     padding: 2.5rem;
     border-radius: 20px;
-    height: 450px;
+    height: 40  0px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .login-title {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 600;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 }
 
 .form-group {
@@ -38,7 +39,7 @@
     margin-bottom: 0.5rem;
     color: #ffffff;
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 1.3rem !important; 
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -53,7 +54,28 @@
     background-color: #f8faff;
     transition: all 0.3s ease;
     margin-top: 10px;
+    padding-right: 40px;
 }
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.toggle-password-btn {
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #666;
+}
+
 
 .input1:focus {
     outline: none;
@@ -100,13 +122,13 @@
     color: #ffffff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.4rem;
-    /* display: block; */
     text-align: center;
+    text-decoration: underline;
+    transition: 0.4s ease;
 }
 
 .register:hover {
     color: #000000;
-    text-decoration: none;
 }
 
 @media (max-width: 768px) {
@@ -124,6 +146,7 @@
     }
 
     .register {
-        font-size: 0.8rem;
+        font-size: 1.4rem;
+        text-decoration: underline;
     }
 }
