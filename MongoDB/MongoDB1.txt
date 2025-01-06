@@ -115,11 +115,49 @@ db.users.find({$or:[{id:1012},{name:"Saksham"}]})
  db.users.find({'phy':{$gte:40}})
  db.users.find({'phy':{$lt:70}})
  db.users.find({'phy':{$lte:70}})
-db.users.find({'phy':{$ne:70}})
-db.users.find({'phy':{$eq:54}})
+ db.users.find({'phy':{$ne:70}})
+ db.users.find({'phy':{$eq:54}})
+
+db.users.find({$and:[{"math":{$gt:50}},{"math":{$lt:70}}]})
+db.users.find({$or:[{"math":{$gt:50}},{"math":{$lt:70}}]})
+
+OrderBY==>
+
+Accending order..
+
+db.users.find().sort({'Phy':1})
+
+Decending Order..
+
+db.users.find().sort({'Phy':-1})
+
+db.users.find({"role":"student"},{"name":1,"Phy":1,"_id":0}).sort({"Phy":1})
+
+Limit==>
+ db.users.find({"role":"student"},{"name":1,"Phy":1,"_id":0}).sort({"Phy":1}).limit(2);
 
 
+Update Query==>>
+db.users.updateOne({"id":107},{$set:{"Phy":50}})
+db.users.updateMany({$or:[{'id':107},{'id':105}]},{$set:{'phy':70}})  ", to add multiple data change"
 
 
+delete Query==>
+ db.users.deleteOne({id:111})
+ db.users.deleteMany({$or:[{id:111},{id:102}]})
 
+======================================================================================================================
+use batch_4;
+
+db.emp.insertMany([ { uid: 1001, name: "Alice Johnson", smon: "January", sal: 5000 }, { uid: 1001, name: "Bob Smith", smon: "February", sal: 5200 }, { uid: 1002, name: "Charlie Brown", smon: "March", sal: 5400 }, { uid: 1002, name: "Diana Prince", smon: "April", sal: 5600 }, { uid: 1002, name: "Ethan Hunt", smon: "May", sal: 5800 }, { uid: 1003, name: "Fiona Gallagher", smon: "June", sal: 6000 }, { uid:1003, name: "George Miller", smon: "July", sal: 6200 }, { uid: 1003, name: "Hannah Montana", smon: "August", sal: 6400 }, { uid:1003, name: "Ian Wright", smon: "September", sal: 6600 }, { uid: 1004, name: "Julia Roberts", smon: "October", sal: 6800 }, { uid: 1004, name: "Kevin Hart", smon: "November", sal: 7000 }, { uid: 1004, name: "Laura Linney", smon: "December", sal: 7200 }, { uid: 1005, name: "Michael Scott", smon: "January", sal: 7400 }, { uid: 1006, name: "Nancy Drew", smon: "February", sal: 7600 }, { uid: 1007, name: "Oscar Wilde", smon: "March", sal: 7800 }] );
+
+
+db.emp.aggregate({$group: {_id: "$name" , total_Quantity:{ $sum : "$quantity"}}});
+db.emp.aggregate({$group: {_id: "$uid" , total_salary:{ $sum : "$sal"}}});
+db.emp.aggregate({$group: {_id: "$uid" , total_salary:{ $avg : "$sal"}}});
+db.emp.aggregate({$group: {_id: "$uid" , total_salary:{ $max : "$sal"}}});
+db.emp.aggregate({$group: {_id: "$uid" , total_salary:{ $min : "$sal"}}});
+ db.emp.aggregate({$group: {_id: "$uid" , total_salary:{ $first : "$sal"}}});
+ db.emp.aggregate({$match:{"uid":1001}},{$group:{_id: "$uid" , total_salary:{$sum:"$sal"}}})
+db.emp.aggregate([{ $group:{ _id: 0, total_sal:{$sum: "$sal" }}}]);
 
