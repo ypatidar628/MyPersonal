@@ -9,10 +9,11 @@ function MainContent() {
   return (
     <div className="main-content">
       <div>
-        <h1>My Main Content App</h1>
+        <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt facere ad a molestiae mollitia officiis quidem ducimus pariatur, facilis ex hic nulla dicta sapiente molestias et, qui obcaecati! Fuga, commodi.</h4>
       </div>
-     
-        <Routes>
+      <div>
+      </div>
+             <Routes>
           <Route path="/#" element={<SideBar/>}></Route>
           <Route path="/about" element={<About/>}></Route>
           <Route path="/contact" element={<Contact/>}></Route>

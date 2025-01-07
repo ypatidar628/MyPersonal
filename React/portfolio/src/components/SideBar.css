@@ -4,16 +4,14 @@
 }
 .side-bar{
     display: block;
-    background-color: aquamarine;
-    /* position: fixed;  */
-background: linear-gradient(180deg, rgb(207, 45, 45) 0%, rgb(30, 27, 27) 93%, rgb(30, 28, 28) 93%);
+    background:black;
     width: 25%;
     height: 100vh;
 }
 .img{
     width: 200px;
     height: 250px;
-    border-radius: 30%;
+    border-radius:15%;
     margin-left: 87px;
     position: relative;
     top: 30px;
@@ -36,7 +34,7 @@ background: linear-gradient(180deg, rgb(207, 45, 45) 0%, rgb(30, 27, 27) 93%, rg
 }
 .im{
     font-size: 40px;
-    color: rgb(30, 27, 27);
+    color: blanchedalmond;
     text-shadow: none;
     font-family: none;
     letter-spacing: normal;
@@ -44,9 +42,9 @@ background: linear-gradient(180deg, rgb(207, 45, 45) 0%, rgb(30, 27, 27) 93%, rg
 .link-main{
     display: inline-grid;
     position: relative;
-    left: 35%;
+    left: 28%;
     margin-top: 18%;
-    font-size: 20px;
+    font-size: 17px;
 }
 .link{
     text-decoration: none;
@@ -54,12 +52,13 @@ background: linear-gradient(180deg, rgb(207, 45, 45) 0%, rgb(30, 27, 27) 93%, rg
     text-shadow: 3px 3px 3px  rgb(30, 27, 27);
     font-family: math;
     letter-spacing: 3px;
-    margin-top: 20px;
-    transition-duration: 0.4s;
+    margin-top: 25px;
+    /* transition-duration: 0.4s; */
 }
 .link:hover{
-    color: rgb(30, 27, 27);
-    transform: scale3d(1.2, 1.2, 1.1);
+    color: rgb(190, 171, 171);
+    /* transform: scale3d(1.2, 1.2, 1.1); */
     font-weight: bolder;
-
+    /* background-color: rgb(105, 97, 97);
+    border-radius: 10px 10px 10px; */
 }
