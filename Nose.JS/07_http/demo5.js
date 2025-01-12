@@ -41,7 +41,7 @@ const server = http.createServer((req,res)=>{
         {
             var data = fs.readFileSync(path.resolve('./pages/error.html'),'utf-8');
             res.write(data);
-            res.end();
+            res.end();  
         }
 
     }
